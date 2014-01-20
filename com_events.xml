@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0.0" method="upgrade" overwrite="true">
+    <name>Events</name>
+    <identifier>com:events</identifier>
+    <author>Dave Li</author>
+    <creationDate>December 2013</creationDate>
+    <copyright>Copyright (C) 2013 Moyo Web Architects and Contributors. (http://www.moyoweb.nl)</copyright>
+    <license>GNU GPLv3 - http://www.gnu.org/licenses/gpl.html</license>
+    <authorEmail>dave@moyoweb.nl</authorEmail>
+    <authorUrl>www.moyoweb.nl</authorUrl>
+    <version>1.0.0</version>
+    <description>Events</description>
+
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">install/install.sql</file>
+        </sql>
+    </install>
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">install/uninstall.sql</file>
+        </sql>
+    </uninstall>
+
+    <administration>
+        <files folder="administrator/components/com_events">
+            <file>dispatcher.php</file>
+            <file>events.php</file>
+
+            <folder>controllers</folder>
+            <folder>databases</folder>
+            <folder>install</folder>
+            <folder>language</folder>
+            <folder>models</folder>
+            <folder>views</folder>
+        </files>
+
+        <menu>COM_EVENTS</menu>
+        <submenu>
+            <menu view="events">Events</menu>
+            <menu view="categories">Categories</menu>
+        </submenu>
+
+    </administration>
+
+    <media folder="media">
+        <folder>com_events</folder>
+    </media>
+</extension>
