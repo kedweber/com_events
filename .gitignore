@@ -1,0 +1,16 @@
+# Ignore ALl #
+##############
+*
+.*
+.DS_Store
+!.gitignore
+
+# Custom Components #
+#####################
+
+!/administrator/
+!/administrator/components/com_events
+
+!/features
+
+!/media/com_events
