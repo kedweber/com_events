@@ -15,16 +15,20 @@ use Behat\Gherkin\Node\PyStringNode,
 //   require_once 'PHPUnit/Framework/Assert/Functions.php';
 //
 require_once 'vendor/autoload.php';
+require_once 'Database.php';
 
 /**
  * Features context.
  */
 class FeatureContext extends BehatContext
 {
+    use Database;
+
     private $driver;
     private $session;
     private $base_url;
     private static $mysqli;
+    private static $db_prefix;
 
 
     /**
@@ -38,20 +42,9 @@ class FeatureContext extends BehatContext
         $this->base_url = $parameters['base_url'];
         $this->driver = new \Behat\Mink\Driver\Selenium2Driver($parameters['browser']);
         $this->session = new \Behat\Mink\Session($this->driver);
+        self::$db_prefix = $parameters['db_prefix'] . '_';
 
-        FeatureContext::$mysqli = new mysqli("localhost:8889", "root", "root", "event-manager");
-
-        if (FeatureContext::$mysqli->connect_errno) {
-            throw new Exception("Failed to connect to MySQL: (" . FeatureContext::$mysqli->connect_errno . ") " . FeatureContext::$mysqli->connect_error);
-        }
-    }
-
-    private static function truncate($table)
-    {
-        echo "\n\033[36m| truncating table: " . $table . "\033[0m\n";
-        if (!FeatureContext::$mysqli->query("TRUNCATE tcbo4_" . $table)) {
-            throw new Exception("Table truncate failed: (" . FeatureContext::$mysqli->errno . ") " . FeatureContext::$mysqli->error);
-        }
+        self::$mysqli = $this->connect($parameters['db_host'], $parameters['db_user'], $parameters['db_pswd'], $parameters['db_db'], $parameters['db_port']);
     }
 
     /**
@@ -83,15 +76,15 @@ class FeatureContext extends BehatContext
      */
     public static function beforeSuite(\Behat\Behat\Event\SuiteEvent $event)
     {
-        FeatureContext::truncate('cck_values');
-        FeatureContext::truncate('events_blocks');
-        FeatureContext::truncate('events_days');
-        FeatureContext::truncate('events_events');
-        FeatureContext::truncate('events_organisations');
-        FeatureContext::truncate('events_rooms');
-        FeatureContext::truncate('events_venues');
-        FeatureContext::truncate('taxonomy_taxonomies');
-        FeatureContext::truncate('taxonomy_taxonomy_relations');
+        self::truncate('cck_values');
+        self::truncate('events_blocks');
+        self::truncate('events_days');
+        self::truncate('events_events');
+        self::truncate('events_organisations');
+        self::truncate('events_rooms');
+        self::truncate('events_venues');
+        self::truncate('taxonomy_taxonomies');
+        self::truncate('taxonomy_taxonomy_relations');
     }
 
     /**
@@ -248,5 +241,15 @@ class FeatureContext extends BehatContext
         if ($this->session->evaluateScript('return window.tinymce.get("' . $id . '").getContent().replace(/(<([^>]+)>)/ig,"") === "' . $value . '"') !== true) {
             throw new Exception("I do not see: " . $value);
         }
+    }
+
+    /**
+     * Prints beautified debug string. static alias for printDebug
+     *
+     * @param string $string debug string
+     */
+    public static function _printDebug($string)
+    {
+        echo "\n\033[36m|  " . strtr($string, array("\n" => "\n|  ")) . "\033[0m\n\n";
     }
 }
