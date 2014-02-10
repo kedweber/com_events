@@ -3,6 +3,7 @@
 <?= @helper('behavior.mootools'); ?>
 <!--
 <script src="media://lib_koowa/js/koowa.js" />
+<style src="media://com_translations/css/translations.min.css" />
 -->
 
 <div class="row-fluid">
@@ -32,6 +33,20 @@
                     <?= @helper('grid.sort', array('column' => 'frontpage', 'title' => @text('FRONTPAGE'))); ?>
                 </th>
                 <th>
+                    <?= @helper('grid.sort', array('column' => 'type', 'title' => @text('Type'))); ?>
+                </th>
+                <? if($events->isTranslatable()) : ?>
+                    <th>
+                        <?= @text('Translations') ?>
+                    </th>
+                <? endif; ?>
+                <th>
+                    <?= @text('Owner'); ?>
+                </th>
+                <th>
+                    <?= @helper('grid.sort', array('column' => 'created_on', 'title' => @text('Date'))); ?>
+                </th>
+                <th>
                     <?= @helper('grid.sort', array('column' => 'order', 'title' => @text('ORDER'))); ?>
                 </th>
                 <th>
@@ -42,7 +57,7 @@
 
             <tfoot>
             <tr>
-                <td colspan="6">
+                <td colspan="10">
                     <?= @helper('paginator.pagination', array('total' => $total)) ?>
                 </td>
             </tr>
@@ -66,6 +81,23 @@
                     <?= @helper('grid.enable', array('row' => $event, 'field' => 'frontpage')); ?>
                 </td>
                 <td>
+                    <?= @escape(ucwords($event->type)); ?>
+                </td>
+                <? if($event->isTranslatable()) : ?>
+	            <td>
+		            <?= @helper('com://admin/translations.template.helper.language.translations', array(
+			            'row' => $event->id,
+			            'table' => $event->getTable()->getName()
+		            )); ?>
+                </td>
+                <? endif; ?>
+                <td>
+                    <?= $event->created_by_name; ?>
+                </td>
+                <td>
+                    <?= @helper('date.humanize', array('date' => $event->created_on)) ?>
+                </td>
+                <td>
                     <?= @helper('grid.order', array('row' => $event, 'total' => $total)); ?>
                 </td>
                 <td>
@@ -76,7 +108,7 @@
 
             <? if (!count($events)) : ?>
             <tr>
-                <td colspan="6" align="center" style="text-align: center;">
+                <td colspan="10" align="center" style="text-align: center;">
                     <?= @text('NO_ITEMS'); ?>
                 </td>
             </tr>

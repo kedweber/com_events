@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS `#__events_events` (
   `type` varchar(255) NOT NULL DEFAULT 'event',
   `ordering` bigint(20) unsigned NOT NULL,
   `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `created_on` datetime NOT NULL,
   `created_by` int(11) NOT NULL DEFAULT '0',
   `modified_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `modified_by` int(11) NOT NULL DEFAULT '0',

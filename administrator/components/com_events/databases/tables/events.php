@@ -1,6 +1,7 @@
 <?php
 
-class ComEventsDatabaseTableEvents extends KDatabaseTableDefault {
+class ComEventsDatabaseTableEvents extends KDatabaseTableDefault
+{
 	public function _initialize(KConfig $config) {
 		$relationable = $this->getBehavior('com://admin/taxonomy.database.behavior.relationable',
 			array(
@@ -12,13 +13,14 @@ class ComEventsDatabaseTableEvents extends KDatabaseTableDefault {
 		$config->append(array(
 			'behaviors' => array(
 				'lockable',
-				'creatable',
+				'com://admin/moyo.database.behavior.creatable',
 				'modifiable',
 				'identifiable',
 				'orderable',
 				'sluggable',
 				'com://admin/cck.database.behavior.elementable',
-				$relationable
+				$relationable,
+                'com://admin/translations.database.behavior.translatable',
 			)
 		));
 

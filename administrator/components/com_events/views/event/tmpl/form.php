@@ -60,11 +60,16 @@
 						<input type="text" name="slug" value="<?= $event->slug ?>" placeholder="<?= @text('Slug'); ?>" />
 					</div>
 				</div>
+
+                <div class="control-group">
+                    <label class="control-label"><?= @text('Type'); ?></label>
+                    <?= @template('com://admin/cck.view.connection.listbox'); ?>
+                </div>
 			</fieldset>
 
 			<fieldset>
 				<legend><?= @text('Fieldset'); ?></legend>
-				<?= @service('com://admin/cck.controller.element')->cck_fieldset_id($event->cck_fieldset_id)->row($event->id)->table('events_events')->layout('list')->display(); ?>
+                <div id="fieldset"></div>
 			</fieldset>
 		</div>
 		<div class="span4">
@@ -83,12 +88,6 @@
 					</div>
 				</div>
 
-				<div class="control-group">
-					<label class="control-label"><?= @text('Descendant Events'); ?></label>
-					<div class="controls">
-						<?= @helper('com://admin/taxonomy.template.helper.listbox.taxonomies', array('name' => 'events[]', 'attribs' => array('multiple' => true, 'size' => 10), 'type' => 'event', 'relation' => 'descendants')); ?>
-					</div>
-				</div>
 				<div class="control-group">
 					<label class="control-label"><?= @text('Venue'); ?></label>
 					<div class="controls venue">

@@ -1,9 +1,14 @@
 <?php
 
-class ComEventsDispatcher extends ComDefaultDispatcher {
-	public function _initialize(KConfig $config) {
+class ComEventsDispatcher extends ComDefaultDispatcher
+{
+    /**
+     * @param KConfig $config
+     */
+    public function _initialize(KConfig $config)
+    {
 		$config->append(array(
-			'controller' => 'venues'
+			'controller' => 'events'
 		));
 
 		parent::_initialize($config);

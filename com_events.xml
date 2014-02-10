@@ -36,11 +36,6 @@
         </files>
 
         <menu>COM_EVENTS</menu>
-        <submenu>
-            <menu view="events">Events</menu>
-            <menu view="categories">Categories</menu>
-        </submenu>
-
     </administration>
 
     <media folder="media">
