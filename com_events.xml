@@ -22,6 +22,13 @@
         </sql>
     </uninstall>
 
+    <files folder="components/com_events">
+        <file>dispatcher.php</file>
+        <file>events.php</file>
+
+        <folder>views</folder>
+    </files>
+
     <administration>
         <files folder="administrator/components/com_events">
             <file>dispatcher.php</file>
