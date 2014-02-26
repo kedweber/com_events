@@ -23,9 +23,12 @@
     </uninstall>
 
     <files folder="components/com_events">
+        <file>aliases.php</file>
         <file>dispatcher.php</file>
         <file>events.php</file>
 
+        <folder>controllers</folder>
+        <folder>models</folder>
         <folder>views</folder>
     </files>
 
