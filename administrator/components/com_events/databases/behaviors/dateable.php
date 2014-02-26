@@ -37,7 +37,9 @@ class ComEventsDatabaseBehaviorDateable extends KDatabaseBehaviorAbstract
 			$row->setData($day);
 			$row->save();
 
-			$ids[] = $row->taxonomy_taxonomy_id;
+			if($row->isRelationable()) {
+				$ids[] = $row->taxonomy_taxonomy_id ? $row->taxonomy_taxonomy_id : $row->getTaxonomy()->id;
+			}
 		}
 
 		$this->setData(array(
