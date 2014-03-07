@@ -1,6 +1,6 @@
 <?php
 
-class ComEventsModelEvents extends ComDefaultModelDefault
+class ComEventsModelEvents extends ComRedisModelDefault
 {
 	/**
 	 * @param KConfig $config

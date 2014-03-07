@@ -9,8 +9,6 @@ class ComEventsDatabaseTableEvents extends KDatabaseTableDefault
 	{
 		$relationable = $this->getBehavior('com://admin/taxonomy.database.behavior.relationable',
 			array(
-//				'ancestors'     => array('event', 'attendees', 'regions', 'days'),
-//				'descendants'     => array('events', 'venue', 'rooms', 'blocks'),
 				'ancestors'     => array(
 					'days' => array(
 						'identifier' => 'com://admin/events.model.days',
@@ -21,6 +19,9 @@ class ComEventsDatabaseTableEvents extends KDatabaseTableDefault
 					),
 					'regions' => array(
 						'identifier' => 'com://admin/regions.model.regions'
+					),
+					'documents' => array(
+						'identifier' => 'com://site/documents.model.documents'
 					)
 				)
 			)
@@ -29,15 +30,17 @@ class ComEventsDatabaseTableEvents extends KDatabaseTableDefault
 		$config->append(array(
 			'behaviors' => array(
 				'dateable',
+				'com://site/documents.database.behavior.documentable',
 				'lockable',
 				'com://admin/moyo.database.behavior.creatable',
 				'modifiable',
 				'identifiable',
 				'orderable',
-				'sluggable',
+				'com://admin/moyo.database.behavior.sluggable',
 				'com://admin/cck.database.behavior.elementable',
 				$relationable,
                 'com://admin/translations.database.behavior.translatable',
+				'com://site/redis.database.behavior.cacheable',
 			)
 		));
 

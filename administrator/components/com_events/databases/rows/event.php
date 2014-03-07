@@ -1,14 +1,5 @@
 <?php
-/**
- * Com
- *
- * @author      Dave Li <dave@moyoweb.nl>
- * @category    Nooku
- * @package     Socialhub
- * @subpackage  ...
- * @uses        Com_
- */
- 
+
 defined('KOOWA') or die('Protected resource');
 
 class ComEventsDatabaseRowEvent extends ComTaxonomyDatabaseRowDefault
@@ -17,7 +8,7 @@ class ComEventsDatabaseRowEvent extends ComTaxonomyDatabaseRowDefault
 	{
 		parent::setData($data, $modified);
 
-		if($this->days) {
+		if($this->days && !$this->start_date && ! $this->end_date) {
 			$first = reset($this->days);
 			$end = end($this->days);
 
