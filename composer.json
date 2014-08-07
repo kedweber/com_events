@@ -1,0 +1,17 @@
+{
+    "name": "cta/events",
+    "type": "joomlatools-installer",
+    "description": "Articles Package. Second version.",
+    "keywords": ["joomla", "articles"],
+    "homepage": "https://github.com/cta-int/events",
+    "authors": [
+        {
+            "name": "Dave Li",
+            "email": "dave@moyoweb.nl",
+            "homepage": "http://www.moyoweb.nl"
+        }
+    ],
+    "require": {
+        "joomlatools/installer": "*"
+    }
+}
