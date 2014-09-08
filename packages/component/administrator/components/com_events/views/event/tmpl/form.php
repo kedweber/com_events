@@ -78,41 +78,77 @@
 				<div class="control-group">
 					<label class="control-label"><?= @text('Attendees'); ?></label>
 					<div class="controls">
-						<?= @helper('com://admin/taxonomy.template.helper.listbox.taxonomies', array('name' => 'attendees[]', 'attribs' => array('multiple' => true, 'size' => 10), 'type' => 'attendee', 'relation' => 'ancestors')); ?>
+						<?= @helper('com://admin/taxonomy.template.helper.listbox.taxonomies', array(
+                            'identifier' => 'com://admin/events.model.attendees',
+                            'name' => 'attendees[]',
+                            'attribs' => array('multiple' => true, 'size' => 10),
+                            'type' => 'attendee',
+                            'relation' => 'ancestors'
+                        )); ?>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label"><?= @text('Parent Event'); ?></label>
 					<div class="controls event">
-						<?= @helper('com://admin/taxonomy.template.helper.listbox.taxonomies', array('name' => 'event', 'type' => 'event', 'relation' => 'ancestors', 'attribs' => array('data-type' => 'event'))); ?>
+						<?= @helper('com://admin/taxonomy.template.helper.listbox.taxonomies', array(
+                            'identifier' => 'com://admin/events.model.events',
+                            'name' => 'event',
+                            'type' => 'event',
+                            'relation' => 'ancestors',
+                            'attribs' => array('data-type' => 'event')
+                        )); ?>
 					</div>
 				</div>
 
 				<div class="control-group">
 					<label class="control-label"><?= @text('Venue'); ?></label>
 					<div class="controls venue">
-						<?= @helper('com://admin/taxonomy.template.helper.listbox.taxonomies', array('name' => 'venue', 'type' => 'venue', 'relation' => 'descendants', 'attribs' => array('data-type' => 'room'))); ?>
+						<?= @helper('com://admin/taxonomy.template.helper.listbox.taxonomies', array(
+                            'identifier' => 'com://admin/events.model.venues',
+                            'name' => 'venue',
+                            'type' => 'venue',
+                            'relation' => 'descendants',
+                            'attribs' => array('data-type' => 'room')
+                        )); ?>
 					</div>
 				</div>
 
 				<div class="control-group">
 					<label class="control-label"><?= @text('Rooms'); ?></label>
 					<div class="controls room">
-						<?= @helper('com://admin/taxonomy.template.helper.listbox.taxonomies', array('name' => 'rooms[]', 'attribs' => array('multiple' => true, 'size' => 10), 'type' => 'room', 'relation' => 'descendants')); ?>
+						<?= @helper('com://admin/taxonomy.template.helper.listbox.taxonomies', array(
+                            'identifier' => 'com://admin/events.model.rooms',
+                            'name' => 'rooms[]',
+                            'attribs' => array('multiple' => true, 'size' => 10),
+                            'type' => 'room',
+                            'relation' => 'descendants'
+                        )); ?>
 					</div>
 				</div>
 
 				<div class="control-group">
 					<label class="control-label"><?= @text('Days'); ?></label>
 					<div class="controls day">
-						<?= @helper('com://admin/taxonomy.template.helper.listbox.taxonomies', array('name' => 'days[]', 'attribs' => array('data-type' => 'block', 'multiple' => true, 'size' => 10), 'type' => 'day', 'relation' => 'descendants')); ?>
+						<?= @helper('com://admin/taxonomy.template.helper.listbox.taxonomies', array(
+                            'identifier' => 'com://admin/events.model.days',
+                            'name' => 'days[]',
+                            'attribs' => array('data-type' => 'block', 'multiple' => true, 'size' => 10),
+                            'type' => 'day',
+                            'relation' => 'descendants'
+                        )); ?>
 					</div>
 				</div>
 
 				<div class="control-group">
 					<label class="control-label"><?= @text('Blocks'); ?></label>
 					<div class="controls block">
-						<?= @helper('com://admin/taxonomy.template.helper.listbox.taxonomies', array('name' => 'blocks[]', 'attribs' => array('multiple' => true, 'size' => 10), 'type' => 'block', 'relation' => 'descendants')); ?>
+						<?= @helper('com://admin/taxonomy.template.helper.listbox.taxonomies', array(
+                            'identifier' => 'com://admin/events.model.blocks',
+                            'name' => 'blocks[]',
+                            'attribs' => array('multiple' => true, 'size' => 10),
+                            'type' => 'block',
+                            'relation' => 'descendants'
+                        )); ?>
 					</div>
 				</div>
 			</fieldset>
