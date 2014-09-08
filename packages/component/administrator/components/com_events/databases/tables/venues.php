@@ -4,8 +4,16 @@ class ComEventsDatabaseTableVenues extends KDatabaseTableDefault {
 	public function _initialize(KConfig $config) {
 		$relationable = $this->getBehavior('com://admin/taxonomy.database.behavior.relationable',
 			array(
-				'ancestors'       => array('event'),
-				'descendants'     => array('rooms')
+				'ancestors'       => array(
+                    'event' => array(
+                        'identifier' => 'com://admin/events.model.events',
+                    )
+                ),
+				'descendants'     => array(
+                    'rooms' => array(
+                        'identifier' => 'com://admin/events.model.rooms',
+                    )
+                )
 			)
 		);
 
@@ -18,7 +26,7 @@ class ComEventsDatabaseTableVenues extends KDatabaseTableDefault {
 				'orderable',
 				'sluggable',
 				'com://admin/cck.database.behavior.elementable',
-				$relationable
+//				$relationable
 			)
 		));
 

@@ -6,8 +6,16 @@ class ComEventsDatabaseTableDays extends KDatabaseTableDefault
 	{
 		$relationable = $this->getBehavior('com://admin/taxonomy.database.behavior.relationable',
 			array(
-//				'ancestors'     => array('event'),
-//				'descendants'     => array('blocks'),
+				'ancestors'     => array(
+                    'event' => array(
+                        'identifier' => 'com://admin/events.model.events',
+                    )
+                ),
+				'descendants'     => array(
+                    'blocks' => array(
+                        'identifier' => 'com://admin/events.model.blocks',
+                    )
+                ),
 			)
 		);
 
