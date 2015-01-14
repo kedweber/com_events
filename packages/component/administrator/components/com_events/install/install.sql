@@ -22,8 +22,7 @@ CREATE TABLE IF NOT EXISTS `#__events_events` (
 -- ----------------------------
 --  Table structure for `#__events_attendees`
 -- ----------------------------
-DROP TABLE IF EXISTS `#__events_attendees`;
-CREATE TABLE `#__events_attendees` (
+CREATE TABLE IF NOT EXISTS `#__events_attendees` (
   `events_attendee_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
@@ -44,8 +43,7 @@ CREATE TABLE `#__events_attendees` (
 -- ----------------------------
 --  Table structure for `#__events_blocks`
 -- ----------------------------
-DROP TABLE IF EXISTS `#__events_blocks`;
-CREATE TABLE `#__events_blocks` (
+CREATE TABLE IF NOT EXISTS `#__events_blocks` (
   `events_block_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
@@ -66,8 +64,7 @@ CREATE TABLE `#__events_blocks` (
 -- ----------------------------
 --  Table structure for `#__events_days`
 -- ----------------------------
-DROP TABLE IF EXISTS `#__events_days`;
-CREATE TABLE `#__events_days` (
+CREATE TABLE IF NOT EXISTS `#__events_days` (
   `events_day_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
@@ -88,8 +85,7 @@ CREATE TABLE `#__events_days` (
 -- ----------------------------
 --  Table structure for `#__events_organisations`
 -- ----------------------------
-DROP TABLE IF EXISTS `#__events_organisations`;
-CREATE TABLE `#__events_organisations` (
+CREATE TABLE IF NOT EXISTS `#__events_organisations` (
   `events_organisation_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
@@ -110,8 +106,7 @@ CREATE TABLE `#__events_organisations` (
 -- ----------------------------
 --  Table structure for `#__events_rooms`
 -- ----------------------------
-DROP TABLE IF EXISTS `#__events_rooms`;
-CREATE TABLE `#__events_rooms` (
+CREATE TABLE IF NOT EXISTS `#__events_rooms` (
   `events_room_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
@@ -130,8 +125,7 @@ CREATE TABLE `#__events_rooms` (
 -- ----------------------------
 --  Table structure for `#__events_venues`
 -- ----------------------------
-DROP TABLE IF EXISTS `#__events_venues`;
-CREATE TABLE `#__events_venues` (
+CREATE TABLE IF NOT EXISTS `#__events_venues` (
   `events_venue_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
@@ -156,7 +150,7 @@ CREATE TABLE `#__events_venues` (
 BEGIN;
 REPLACE INTO `#__cck_fieldsets` (`cck_fieldset_id`, `title`, `slug`, `enabled`, `created_on`, `created_by`, `modified_on`, `modified_by`, `locked_on`, `locked_by`)
 VALUES
-	(61,'Event','event',1,'0000-00-00 00:00:00',0,'0000-00-00 00:00:00',0,'0000-00-00 00:00:00',0),
+	(200,'Event','event',1,'0000-00-00 00:00:00',0,'0000-00-00 00:00:00',0,'0000-00-00 00:00:00',0),
 	(62,'Attendee','attendee',1,'2013-12-23 09:51:13',823,'0000-00-00 00:00:00',0,'0000-00-00 00:00:00',0),
 	(64,'Venue','venue',1,'2013-12-23 10:16:09',823,'2013-12-23 10:16:20',823,'0000-00-00 00:00:00',0),
 	(65,'Organisation','organisation',1,'2013-12-23 11:29:13',823,'2013-12-23 11:29:20',823,'0000-00-00 00:00:00',0),
